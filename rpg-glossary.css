@@ -1,0 +1,15 @@
+details {
+    border-block: 1px solid black;
+}
+
+details[open] summary {
+    border-block-end: 1px solid black;
+}
+
+dt {
+    font-weight: bold;
+}
+
+summary {
+    padding: 0.2em 0 0.15em 0;
+}

@@ -6,7 +6,19 @@ class Glossary extends HTMLElement {
     connectedCallback() {
         this.attachShadow({mode: 'open'});
 
+
         const details = createElement('details');
+        let style;
+        if (this.getAttribute('css')) {
+            style = createElement(
+                'link',
+                {
+                    rel:'stylesheet',
+                    href:`${this.getAttribute('css')}`
+                }
+            );
+            details.append(style);
+        }
         const summary = createElement('summary');
         summary.innerText = "Glossary";
         details.append(summary);
