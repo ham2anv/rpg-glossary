@@ -8,27 +8,25 @@ class Glossary extends HTMLElement {
 
 
         const details = createElement('details');
-        let style;
         if (this.getAttribute('css')) {
-            style = createElement(
+            details.append(createElement(
                 'link',
                 {
                     rel:'stylesheet',
                     href:`${this.getAttribute('css')}`
                 }
-            );
-            details.append(style);
+            ));
         }
         const summary = createElement('summary');
         summary.innerText = "Glossary";
         details.append(summary);
         const list = createElement('dl');
-        document.querySelectorAll('dfn + ins').forEach(defIns => {
+        document.querySelectorAll('dfn + span.rpg-definition').forEach(defSpan => {
             const term = createElement('dt');
             const def = createElement('dd');
-            const defDfn = defIns.previousElementSibling;
+            const defDfn = defSpan.previousElementSibling;
             term.innerText = defDfn.innerText;
-            def.innerText = defIns.innerText;
+            def.innerText = defSpan.innerText;
             list.append(term,def);
         });
         details.append(list);
